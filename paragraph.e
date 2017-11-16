@@ -17,7 +17,7 @@ feature
 
 	make (new_paragraph: STRING)
 		require
-			-- string not empty
+			new_paragraph.is_empty = FALSE
 		do
 			element := new_paragraph
 		ensure
