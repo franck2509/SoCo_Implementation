@@ -11,7 +11,7 @@ inherit
 
 	COMPONENT
 
-feature
+feature                 --need add linkedlist data structure
 	content:STRING
 
 	size:INTEGER --string length
