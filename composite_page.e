@@ -50,7 +50,7 @@ feature
 
 
 
-	output(dc:COMPONENT)  delete this_wq
+	output(dc:COMPONENT)  --delete this_wq
 	    require
 	    	dc.parent=Void
 	    	not dc.is_empty
