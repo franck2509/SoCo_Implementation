@@ -31,7 +31,7 @@ feature
 
 
 
-	add_link(dc:COMPONENT)--"/xxx"
+	add_link(dc:COMPONENT)--"/xxx"   delete this_wq
 	    require
 	    	dc.parent=Void
 	    	not dc.is_empty
@@ -40,7 +40,7 @@ feature
 
 
 
-	add_anchor(dc:COMPONENT)--"#xxx"
+	add_anchor(dc:COMPONENT)--"#xxx"  delete this_wq
 	    require
 	    	dc.parent=Void
 	    	not dc.is_empty
@@ -50,7 +50,7 @@ feature
 
 
 
-	output(dc:COMPONENT)
+	output(dc:COMPONENT)  delete this_wq
 	    require
 	    	dc.parent=Void
 	    	not dc.is_empty
