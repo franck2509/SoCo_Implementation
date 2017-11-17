@@ -10,42 +10,18 @@ deferred class
 inherit
 	COMPONENT
 
-feature
+feature	-- Settings
 
-	base_capacity: INTEGER
-	base_index: INTEGER
-	unordered_list_array : ARRAY[STRING]
-	counter: INTEGER
-
-feature -- Status
-
-	set_counter
-		do
-			counter := 1
-		end
-
-	set_capacity (c: INTEGER)
-		do
-			capacity := c
-		end
-
-	set_base_index (i: INTEGER)
-		do
-			base_index := i
-		end
-
-	create_array
-		do
-			create unordered_list_array.with_capacity(base_capacity, base_index)
-		end
-
-	add_element (element: STRING)
+	make (new_unordered_list: ARRAY[STRING])
 		require
-			element.is_empty = FALSE
+			new_unordered_list.is_empty = FALSE
 		do
-			unordered_list_array[counter]:= element
-			counter:= counter + 1
+			element := new_unordered_list
 		end
-
+		
+	accept (a_visitor: VISITOR)
+		do
+			a_visitor.visit_UnorderedList (Current)
+		end
 
 end
