@@ -1,0 +1,16 @@
+html	HTML_VISITOR	visit_title	F959_7081	C1\ht959.c
+html	HTML_VISITOR	visit_paragraph	F959_7082	C1\ht959.c
+html	HTML_VISITOR	visit_page	F959_7083	C1\ht959.c
+html	WEBSITE_COMPONENT	name	F960_7084	C1\we960.c
+html	PAGE	make	F961_7086	C1\pa961.c
+html	PAGE	size	F961_7087	C1\pa961.c
+html	PAGE	add_entry	F961_7088	C1\pa961.c
+html	PAGE	print_string	F961_7089	C1\pa961.c
+html	PAGE	pagetext	F961_7090	C1\pa961.c
+html	PAGE	accept	F961_7091	C1\pa961.c
+html	PAGE	entries	F961_7092	C1\pa961.c
+html	PARAGRAPH	make	F962_7093	C1\pa962.c
+html	PARAGRAPH	accept	F962_7094	C1\pa962.c
+html	TITLE	make	F963_7095	C1\ti963.c
+html	TITLE	accept	F963_7096	C1\ti963.c
+html	APPLICATION	make	F964_7097	C1\ap964.c
