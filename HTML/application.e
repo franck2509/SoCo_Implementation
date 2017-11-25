@@ -1,4 +1,3 @@
-
 class
 	APPLICATION
 
@@ -63,10 +62,10 @@ feature {NONE} -- Initialization
 
 			-- Create html_visitor
 			create get_htmlcode.make
-			homepage.accept (get_htmlcode) -- loop through the homepage list with all pages & elements
+			homepage.accept (get_htmlcode) -- GOAL:loop through the homepage list with all pages & elements
 
 			io.put_string ("The homepage document starts here:%N%N" + get_htmlcode.name)
-			page.accept (get_htmlcode) -- this would add unnecessary html to the string
+			--page.accept (get_htmlcode) -- this WILL add unnecessary html to the string
 			io.put_string ("The html document starts here:%N%N" + get_htmlcode.name)
 
 		end
