@@ -40,7 +40,9 @@ feature
 
 	visit_page (a_page: PAGE)
 		do
-			name := ("<!DOCTYPE html>%N<html>%N%N" + pageText (a_page) + "%N%N</html>%N%N%N")
+			--name := "" -- not needed
+			name := ("<!DOCTYPE html>%N<html>%N%N" + pageText (a_page) + "%N</html>%N%N-------------------------------------------------------%N%N")
+			io.put_string (name)
 		end
 
 	pageText (a_page: PAGE): STRING

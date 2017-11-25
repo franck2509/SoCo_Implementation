@@ -12,21 +12,24 @@ feature {NONE} -- Initialization
 	make
 			-- Run application.
 		local
-			--email_list:FS_FILE --, article, report: FS_FILE
-			--count_visitor: TEXTFILE_COUNT_VISITOR
 
-			homepage, page: PAGE -- create a number of pages and call them p1, p2, p3... || or we say we got a Homepage and Subpages
-			I_title: TITLE
+			homepage, page: PAGE -- creates Homepage (homepage) and Subpages (page)
+			I_title: TITLE ------ we could integrate TITLE into "homepage/page" ???
 			I_paragraph: PARAGRAPH
 
 			get_htmlcode: HTML_VISITOR
 
 --Order:
---Set a URL first
---Create a page
---Create title
---Create other attributes
---Create next pages with one title first and then multiple attributes
+--1. Set a URL first
+--2. Create a homepage
+--3. Create a title and add it to homepage
+--4. Create any other component and add it to homepage
+
+--5. Create a title and add it to page
+--6. Create any other component and add it to page
+--7. Create the chosen visitor and call it with homepage.accept
+
+--8. Repeat 5. - 7. for each new page
 
 		do
 			create homepage.make ("Homepage") -- macht eine Liste (von component-elementen), mit diesem Namen
@@ -34,39 +37,48 @@ feature {NONE} -- Initialization
 			create page.make ("Page 1") -- zweite Liste
 			homepage.add_entry (page) -- pusht page in homepage
 
-			io.put_string ("Thanks for working with our HTML Generator %N%N")
+			io.put_string ("Thanks for working with our HTML Generator.%NThis is a string of all your subpages, followed by the homepage: %N%N")
+
 
 
 			-- Creates components and pushes to a page
 			create I_title.make ("Super Title") -- Title Objekt erhält name
 			homepage.add_entry (I_title)
 
-			create I_title.make ("Title for first subpage")
+			create I_title.make ("Title for first SUBPAGE")
 			page.add_entry (I_title)
 
 
-			create I_paragraph.make ("This is the first paragraph")
+			create I_paragraph.make ("This is the first HOME paragraph")
 			homepage.add_entry (I_paragraph)
 
-			create I_paragraph.make ("This is first SUBPAGE paragraph")
+			create I_paragraph.make ("This is the first SUBPAGE paragraph")
 			page.add_entry (I_paragraph)
 
-			create I_paragraph.make ("This is a HOMEPAGE paragraph")
+			create I_paragraph.make ("This is the second HOMEPAGE paragraph")
 			homepage.add_entry (I_paragraph)
 
-		--	io.put_string (homepage.print_string (get_htmlcode)) -- OUTPUTS homepage "!DOCTYPE"
-
-			create I_paragraph.make ("This is second SUBPAGE paragraph")
+			create I_paragraph.make ("This is the second SUBPAGE paragraph")
 			page.add_entry (I_paragraph)
+
+			---------------------------------------
+			-- TEST: 2. SUBPAGE
+			create page.make ("Page 2")
+			homepage.add_entry (page)
+			create I_paragraph.make ("This is the first SUBPAGE TWO paragraph")
+			page.add_entry (I_paragraph)
+			--page.add_entry (I_title)
+
+			---------------------------------------
 		--	io.put_string (page.print_string) -- OUTPUTS first subpage "!DOCTYPE"
 
 			-- Create html_visitor
-			create get_htmlcode.make
+			create get_htmlcode.make -- creates the visitor object, that instanciates a string, that will be overridden and put out later
 			homepage.accept (get_htmlcode) -- GOAL:loop through the homepage list with all pages & elements
 
-			io.put_string ("The homepage document starts here:%N%N" + get_htmlcode.name)
+			--io.put_string ("The homepage document starts here:%N%N" + get_htmlcode.name)
 			--page.accept (get_htmlcode) -- this WILL add unnecessary html to the string
-			io.put_string ("The html document starts here:%N%N" + get_htmlcode.name)
+			--io.put_string ("The html document starts here:%N%N" + get_htmlcode.name)
 
 		end
 
