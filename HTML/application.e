@@ -67,6 +67,10 @@ feature {NONE} -- Initialization
 			homepage.add_entry (page)
 			create I_paragraph.make ("This is the first SUBPAGE TWO paragraph")
 			page.add_entry (I_paragraph)
+
+			create I_paragraph.make ("Will this be overridden?") -- won't be added, since add_entry is skipped
+			create I_paragraph.make ("Will this OVERRIDE the string above? - edit: yes, it does")
+			page.add_entry (I_paragraph)
 			--page.add_entry (I_title)
 
 			---------------------------------------
