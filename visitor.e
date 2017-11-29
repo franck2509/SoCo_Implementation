@@ -37,6 +37,14 @@ feature
 		deferred
 		end
 
+	visit_table_start (a_table_start: TABLE_START): STRING
+		deferred
+		end
+
+	visit_table_end (a_table_end: TABLE_END): STRING
+		deferred
+		end
+
 	visit_list_ordered (a_ordered_list: LIST_ORDERED): STRING
 		deferred
 		end
@@ -44,6 +52,13 @@ feature
 	visit_list_unordered (a_unordered_list: LIST_UNORDERED): STRING
 		deferred
 		end
+
+	visit_link_external (a_external_link: LINK_EXTERNAL): STRING
+		deferred
+		end
+
+--	visit_link_internal
+
 
 
 end

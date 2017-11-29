@@ -101,6 +101,16 @@ feature {NONE}
 			Result := array2string
 		end
 
+	visit_table_start (a_table_start: TABLE_START): STRING
+		do
+			Result := ("<table>%N")
+		end
+
+	visit_table_end (a_table_end: TABLE_END): STRING
+		do
+			Result := ("</table>%N")
+		end
+
 	visit_list_ordered (a_ordered_list: LIST_ORDERED): STRING
 		do
 			array2string := "  <ol>%N"
@@ -135,6 +145,11 @@ feature {NONE}
 			array2string.append ("  </ul>%N")
 
 			Result := array2string
+		end
+
+	visit_link_external (a_external_link: LINK_EXTERNAL): STRING
+		do
+			Result := ("  <a href=%"" + a_external_link.content + "%">" +a_external_link.text + "</a>%N")
 		end
 
 	visit_page (a_page: PAGE)
