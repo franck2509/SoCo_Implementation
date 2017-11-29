@@ -53,6 +53,18 @@ feature
 		deferred
 		end
 
+	visit_anchor (a_anchor: ANCHOR): STRING
+		deferred
+		end
+
+	visit_anchor_link (a_anchor: ANCHOR_LINK): STRING
+		deferred
+		end
+
+	visit_anchor_tag_gen (a_anchor_tag: ANCHOR_TAG_GEN): STRING
+		deferred
+		end
+
 	visit_link_external (a_external_link: LINK_EXTERNAL): STRING
 		deferred
 		end

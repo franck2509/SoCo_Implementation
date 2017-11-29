@@ -17,6 +17,8 @@ feature {NONE}
 	iter: INTEGER
 	url: STRING
 	sub_url: STRING
+	anchor_counter: INTEGER
+	anchortag: STRING
 
 	make (a_page: PAGE)
 		do
@@ -24,12 +26,14 @@ feature {NONE}
 			array2string := ""
 			url := ""
 			sub_url := ""
+			anchortag := ""
+			anchor_counter := 1
 			a_page.accept (Current)
 		end
 
 	visit_title (a_page: PAGE): STRING -- all the make classes will be called through make_page (accept)
 		do
-			Result := ("<head>%N  <title>" + a_page.title + "</title>%N" + "  <base href=" + url_gen (a_page) + "/>%N</head>%N%N")
+			Result := ("<head>%N  <title>" + a_page.title + "</title>%N" + "  <base href=%"" + url_gen (a_page) + "%"/>%N</head>%N%N")
 		end
 
 	url_gen (a_page: PAGE): STRING
@@ -38,7 +42,7 @@ feature {NONE}
 				then url := a_page.title
 					Result := url
 				else sub_url := url + "/" + a_page.title
-					sub_url.replace_substring_all (" ", "_")
+					sub_url.replace_substring_all (" ", "-")
 					Result := sub_url
 			end
 		end
@@ -56,7 +60,7 @@ feature {NONE}
 
 	visit_image (a_image: IMAGE): STRING -- NEW _FH
 		do
-			Result := ("  <img src=%"" + a_image.content + "%">%N")
+			Result := ("  <img src=%"" + a_image.content + "%"><br>%N")
 		end
 
 	visit_snippet (a_snippet: SNIPPET): STRING -- same as in markdown
@@ -145,6 +149,23 @@ feature {NONE}
 			array2string.append ("  </ul>%N")
 
 			Result := array2string
+		end
+
+	visit_anchor (a_anchor: ANCHOR): STRING
+		do
+			Result := ("  <a name=%"" + a_anchor.content + "%"></a>%N")
+		end
+
+	visit_anchor_link (a_anchor_link: ANCHOR_LINK): STRING
+		do
+			Result := ("  <a href=%"#" + a_anchor_link.content + "%">" +a_anchor_link.text + "</a>%N")
+		end
+
+	visit_anchor_tag_gen (a_anchor_tag: ANCHOR_TAG_GEN): STRING
+		do
+			anchortag := "anchortag" + anchor_counter.out
+			anchor_counter := anchor_counter + 1
+			Result := anchortag
 		end
 
 	visit_link_external (a_external_link: LINK_EXTERNAL): STRING

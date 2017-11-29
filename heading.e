@@ -10,27 +10,27 @@ create
 
 feature
 
-	size: STRING -- initialize variable size as STRING
+	size: STRING -- 1) size als string initialisiert
 
     make (a_heading: STRING; a_size: INTEGER; a_page: PAGE)
-		require					-- precondition: heading must not be empty, must have a size from 1 to 6
-			a_heading.is_empty = FALSE	
+		require
+			a_heading.is_empty = FALSE
 			0 < a_size
 			7 > a_size
-		do					-- sets content for heading, sets size for heading and converts a_size to STRING
+		do
 			content := a_heading
-			size := a_size.out 		-- .out for converting a_size to STRING
-			a_page.add_entry (Current)	
-		ensure					-- postcondition: no bugs happened; every parameter is equal as it was set to
+			size := a_size.out -- 2) .out macht e zahl zum string
+			a_page.add_entry (Current)
+		ensure
 			content = a_heading
 			a_size = old a_size
 		end
 
-	accept (a_visitor: VISITOR)		-- accepts the VISITOR
+	accept (a_visitor: VISITOR)
 		do
-			content := a_visitor.visit_heading (Current)	-- visitor can "visit" and read everything set in heading
-			size := a_visitor.visit_heading (Current) 
+			content := a_visitor.visit_heading (Current)
+			size := a_visitor.visit_heading (Current) -- 3) denn wierd da au en string zrugg geh
 		end
 	invariant
-		content.is_empty = FALSE	-- invariant: heading must not be empty
+		content.is_empty = FALSE
 end

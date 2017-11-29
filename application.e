@@ -20,22 +20,27 @@ feature {NONE} -- Initialization
 			-- Run application.
 		local -- Chose and add content with the corresponding local variables.
 
-			homepage, page: PAGE -- creates homepage (+URL) and subpages (+sub-URL) plus their titles
-			I_heading: HEADING
-			I_paragraph: PARAGRAPH
-			I_image: IMAGE
-			I_snippet: SNIPPET
-			I_table_header: TABLE_HEADER
-			I_table_row: TABLE_ROW
-			I_ordered_list: LIST_ORDERED
-			I_unordered_list: LIST_UNORDERED
-		--	I_internal_link: LINK_INTERNAL
-			I_external_link: LINK_EXTERNAL
-			I_table_start: TABLE_START
-			I_table_end: TABLE_END
+			homepage, page: 	PAGE -- creates homepage (+URL) and subpages (+sub-URL) plus their titles
+			I_heading: 			HEADING
+			I_paragraph: 		PARAGRAPH
+			I_image: 			IMAGE
+			I_snippet: 			SNIPPET
+			I_table_header: 	TABLE_HEADER
+			I_table_row: 		TABLE_ROW
+			I_ordered_list: 	LIST_ORDERED
+			I_unordered_list: 	LIST_UNORDERED
+		--	I_internal_link: 	LINK_INTERNAL
+			I_external_link: 	LINK_EXTERNAL
+			I_table_start: 		TABLE_START
+			I_table_end: 		TABLE_END
+			I_anchor: 			ANCHOR
+			I_anchor_link: 		ANCHOR_LINK
+			I_anchor_tag_gen:	ANCHOR_TAG_GEN
 
-			get_htmlcode: HTML_VISITOR
-			my_array: ARRAYED_LIST [STRING]
+			anchor_tag1:		ANCHOR_TAG_GEN
+
+			get_htmlcode: 		HTML_VISITOR
+			my_array: 			ARRAYED_LIST [STRING]
 			--table_list: LINKED_LIST [PAIR [G]]
 
 --Order:
@@ -54,6 +59,14 @@ feature {NONE} -- Initialization
 
 			io.put_string ("Thanks for working with our HTML Generator.%NThis is a string of all your subpages, followed by the homepage: %N%N")
 
+
+------------------------ anchors don't work yet------------
+			create anchor_tag1.make
+			create I_anchor_tag_gen.make
+			create I_anchor_link.make (anchor_tag1,"anchor 1", homepage)
+			create I_anchor_link.make (I_anchor_tag_gen,"anchor 2", homepage)
+
+------------------------
 			------------------------------------
 
 			-- Create components and push to a page
