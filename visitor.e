@@ -1,66 +1,49 @@
-note
-	description: "Summary description for {VISITOR}."
-	author: ""
-	date: "$Date$"
-	revision: "$Revision$"
-
-class
+deferred class
 	VISITOR
 
-inherit
-	HTMLGEN
+feature
 
-create
-	make
 
-feature	-- all visit functions, sorted alphabetically, deferred
 
-	visit_newPage		-- creation of new page (correct way of creating new page?)
+	visit_page (a_page: PAGE)
 		deferred
 		end
 
-	visit_ExternalLink
+	visit_title (a_page: PAGE): STRING
 		deferred
 		end
 
-	visit_Heading
+	visit_paragraph (a_paragraph: PARAGRAPH): STRING
 		deferred
 		end
 
-	visit_Image
+	visit_image (a_image: IMAGE): STRING
 		deferred
 		end
 
-	visit_InternalLink
+	visit_snippet (a_snippet: SNIPPET): STRING
 		deferred
 		end
 
-	visit_OrderedList
+	visit_heading (a_heading: HEADING): STRING
 		deferred
 		end
 
-	visit_Paragraph
+	visit_table_row (a_table_row: TABLE_ROW): STRING
 		deferred
 		end
 
-	visit_Snippet
+	visit_table_header (a_table_header: TABLE_HEADER): STRING
 		deferred
 		end
 
-	visit_TableBody
+	visit_list_ordered (a_ordered_list: LIST_ORDERED): STRING
 		deferred
 		end
 
-	visit_TableHeader
+	visit_list_unordered (a_unordered_list: LIST_UNORDERED): STRING
 		deferred
 		end
 
-	visit_Title
-		deferred
-		end
-
-	visit_UnorderedList
-		deferred
-		end
 
 end

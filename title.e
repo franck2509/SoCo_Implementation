@@ -1,18 +1,32 @@
-note
-	description: "Summary description for {TITLE}."
-	author: ""
-	date: "$Date$"
-	revision: "$Revision$"
-
-deferred class
+class
 	TITLE
 
 inherit
-	COMPONENT
+	WEBSITE_COMPONENT
+
+create
+	make
 
 feature
-	-- update title as string
-	-- include pre- & postcondition
-	-- include accept visitor
+
+	make (a_name: STRING)
+		do
+			name := a_name
+		end
+
+
+	accept (a_visitor: VISITOR)
+		do
+			--io.put_string (a_visitor.visit_title (Current))
+			name := a_visitor.visit_title (Current)
+		end
+
+
+
+	--name: STRING
+
+	--size: INTEGER
+	--	do
+	--	end
 
 end

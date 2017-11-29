@@ -1,5 +1,5 @@
 class
-	PARAGRAPH
+	LINK_INTERNAL
 
 inherit
 	WEBSITE_COMPONENT
@@ -9,24 +9,26 @@ create
 
 feature
 
-	make (a_paragraph: STRING; a_page: PAGE)
+	anchor: STRING
+
+	make (a_url: STRING; a_anchor: STRING; a_page:PAGE)
 		require
-			a_paragraph.is_empty = FALSE
+			a_url.is_empty = False
 		do
-			content := a_paragraph
+			content := a_url
 			a_page.add_entry (Current)
+
 		ensure
-			content.is_empty = FALSE
-			content = a_paragraph
+            content = a_url
 		end
+
 
 
 	accept (a_visitor: VISITOR)
 		do
-			content := a_visitor.visit_paragraph (Current)
+			content := a_visitor.visit_internal_link (Current)
 		end
 
 	invariant
 		content.is_empty = FALSE
-
 end

@@ -1,36 +1,42 @@
-note
-	description: "Summary description for {IMAGE}."
-	author: ""
-	date: "$Date$"
-	revision: "$Revision$"
-
-deferred class
+class
 	IMAGE
 
 inherit
-	COMPONENT
+	WEBSITE_COMPONENT
+
+create
+	make
+
+
 
 feature
-	-- return image file path or url as string
-	-- include pre- & postcondition
-	-- include accept visitor
 	format_check: STRING
+	char1: STRING
+	charn: STRING
 
-	make (new_image: STRING)
+	make (a_image: STRING; a_page:PAGE)
 		require
-			-- string not empty; better minimum length of 4 (easy way of doing it?) _FH
-			-- string ends in .jpeg or .gif
-			new_image.is_empty = FALSE
-			format_check := new_image.keep_tail (n: 4)
-			format_check = ".jpg" or ".gif"
+			a_image.is_empty = False
 		do
-			element := new_image
+			content := a_image
+			format_check := a_image
+			format_check := format_check.substring ((format_check.count -3), format_check.count)
+			char1 := a_image.substring (1,1)
+			charn := a_image.substring (a_image.count, a_image.count)
+			a_page.add_entry (Current)
+
 		ensure
-			-- no ideas yet _FH	
+            format_check.is_equal (".jpg") or format_check.is_equal (".gif")
+            content = a_image
 		end
+
+
 
 	accept (a_visitor: VISITOR)
 		do
-			a_visitor.visit_Image (Current)
+			content := a_visitor.visit_image (Current)
 		end
+
+	invariant
+		content.is_empty = FALSE
 end

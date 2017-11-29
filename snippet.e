@@ -1,18 +1,30 @@
-note
-	description: "Summary description for {SNIPPET}."
-	author: ""
-	date: "$Date$"
-	revision: "$Revision$"
-
-deferred class
+class
 	SNIPPET
 
 inherit
-	COMPONENT
+	WEBSITE_COMPONENT
 
-feature
-	-- return snippet as string
-	-- include pre- & postcondition
-	-- include accept visitor
+create
+	make
 
+feature {NONE}
+
+	make (a_snippet: STRING; a_page: PAGE)
+		require
+			a_snippet.is_empty = FALSE
+		do
+			content := a_snippet
+			a_page.add_entry (Current)
+		ensure
+			content = a_snippet
+		end
+
+
+	accept (a_visitor: VISITOR)
+		do
+			content := a_visitor.visit_snippet (Current)
+		end
+
+	invariant
+		content.is_empty = FALSE
 end

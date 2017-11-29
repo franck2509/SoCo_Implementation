@@ -1,5 +1,5 @@
 class
-	TABLE_HEADER
+	LIST_ORDERED
 
 inherit
 	WEBSITE_COMPONENT
@@ -11,16 +11,16 @@ feature
 
 	content_arr: ARRAYED_LIST [STRING]
 
-	make (a_table_header: ARRAYED_LIST [STRING]; a_page: PAGE)
+	make (a_ordered_list: ARRAYED_LIST [STRING]; a_page: PAGE)
 		do
 			content := ""
-			content_arr := a_table_header
+			content_arr := a_ordered_list
 			a_page.add_entry (Current)
 		end
 
 	accept (a_visitor: VISITOR)
 		do
-			content := a_visitor.visit_table_header (Current)
+			content := a_visitor.visit_list_ordered (Current)
 
 		end
 end
