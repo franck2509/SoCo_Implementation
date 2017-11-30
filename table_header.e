@@ -23,4 +23,6 @@ feature
 			content := a_visitor.visit_table_header (Current)
 
 		end
+	invariant
+		content.is_empty = False
 end
