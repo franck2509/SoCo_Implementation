@@ -39,10 +39,10 @@ feature
 		title.is_empty = False
 
 
-feature {VISITOR}	-- this is somehow a syntax error!
+feature {VISITOR}	
 
 	entries: LIST [WEBSITE_COMPONENT] -- list, that is accessible through a visitor object
-	
+	-- this is somehow a syntax error!
 	
 
 end
