@@ -20,7 +20,7 @@ feature
 			content := ""
 			a_page.add_entry (Current)
 		ensure
-			content.is_empty = TRUE
+			content.is_empty = True
 		end
 
 
@@ -28,5 +28,8 @@ feature
 		do
 			content := a_visitor.visit_table_end (Current)
 		end
+		
+	invariant
+		content.is_empty = True
 
 end
