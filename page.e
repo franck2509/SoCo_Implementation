@@ -12,8 +12,7 @@ feature
 	title: STRING
 
 	make (a_content: STRING)
-		require
-			a_content.is_empty = FALSE
+		
 		do
 			content := "" -- gives back an empty string when the visitor.pageText - loop prints every item.name, so that the title is written in the right spot.
 			title := a_content
