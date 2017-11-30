@@ -17,7 +17,9 @@ feature
 		do
 			content := "" -- gives back an empty string when the visitor.pageText - loop prints every item.name, so that the title is written in the right spot.
 			title := a_content
-			create {LINKED_LIST [WEBSITE_COMPONENT]} entries.make -- LISTE für Visitor
+			create {LINKED_LIST [WEBSITE_COMPONENT]} entries.make -- LISTE fÃ¼r Visitor
+		ensure
+			title = a_content
 		end
 
 
@@ -32,10 +34,15 @@ feature
 			title := a_visitor.visit_title (Current)
 			a_visitor.visit_page (Current)
 		end
+		
+	invariant
+		title.is_empty = False
 
 
 feature {VISITOR}
 
 	entries: LIST [WEBSITE_COMPONENT] -- list, that is accessible through a visitor object
+	
+	
 
 end
